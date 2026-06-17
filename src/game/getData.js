@@ -15,6 +15,7 @@ export default async function getData(name) {
     const cardData = {
       name: name,
       sprite: sprite,
+      id: crypto.randomUUID(), // adding here is ok i hope
     };
 
     return cardData;

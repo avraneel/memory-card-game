@@ -1,18 +1,24 @@
+import Card from "./Card";
+import getData from "../game/getData";
+
 export default function CardGrid() {
-  const pokemonList = [
-    {
+  const pokemonList = [];
+
+  for (let i = 1; i < 12; i++) {
+    const item = {
       id: crypto.randomUUID(),
       name: "bulbasaur",
-    },
-    {
-      id: crypto.randomUUID(),
-      name: "charizard",
-    },
-  ];
+      sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${Math.pow(i + 13, 2)}.png`,
+    };
+
+    pokemonList.push(item);
+  }
+
+  function handleClick() {}
 
   const pokemonCards = pokemonList.map((pokemon) => (
     <li key={pokemon.id} value={pokemon.name} onClick={handleClick}>
-      {pokemon.name}
+      <Card item={pokemon} />
     </li>
   ));
 
@@ -22,3 +28,17 @@ export default function CardGrid() {
     </div>
   );
 }
+
+async function createList(pokemonNames) {
+  const pokemonList = [];
+
+  for (const pokemon of pokemonNames) {
+    const item = await getData(pokemon);
+    item.id = crypto.randomUUID();
+    pokemonList.push(item);
+  }
+
+  console.log(pokemonList);
+}
+
+createList(["bulbasaur", "charizard"]);

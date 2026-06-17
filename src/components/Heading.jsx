@@ -1,3 +1,9 @@
 export default function Heading() {
-  return <></>;
+  return (
+    <>
+      <header>
+        <h1>Pokemon Memory Card Game</h1>
+      </header>
+    </>
+  );
 }

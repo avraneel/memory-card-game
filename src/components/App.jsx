@@ -8,10 +8,10 @@ export default function App() {
   const [stack, setStack] = useState([]);
 
   return (
-    <>
+    <div className="app">
       <Heading />
       <Scoreboard />
       <CardGrid />
-    </>
+    </div>
   );
 }
