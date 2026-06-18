@@ -27,9 +27,14 @@ source {
 
 :root {
   --radius: 15px;
+  --bg-color: #a9def9;
+  --white: #fafafa;
+  --icy-blue: #a9def9;
+  --yale-blue: #004777;
 }
 
 body {
-  padding: 1rem;
+  padding: 2rem;
   font-family: "Outfit", sans-serif;
+  background-color: var(--bg-color);
 }

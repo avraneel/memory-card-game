@@ -1,3 +1,5 @@
+import "../styles/heading.css";
+
 export default function Heading() {
   return (
     <>

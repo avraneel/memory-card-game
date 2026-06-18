@@ -1,0 +1,6 @@
+header {
+  padding: 2rem;
+  border-radius: var(--radius);
+  background-color: var(--white);
+  align-content: center;
+}

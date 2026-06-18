@@ -4,11 +4,16 @@ import "../styles/cardGrid.css";
 
 export default function CardGrid() {
   const pokemonNames = [
-    "bulbasaur",
+    "bayleaf",
     "charmander",
     "ariados",
     "magmortar",
     "hitmonchan",
+    "snorlax",
+    "darkrai",
+    "empoleon",
+    "hypno",
+    "wabuffet",
   ];
 
   const pokemonItems = pokemonNames.map((pokemon) => {

@@ -1,5 +1,12 @@
 .cardGrid {
   display: grid;
   gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   justify-items: center;
+}
+
+@media (width > 500px) {
+  .cardGrid {
+    grid-column: 1 / 3;
+  }
 }
