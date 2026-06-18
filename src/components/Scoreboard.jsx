@@ -3,6 +3,8 @@ export default function Scoreboard() {
     <>
       <section>
         <h2>Scoreboard</h2>
+        <p>Score: </p>
+        <p>Best Score: </p>
       </section>
     </>
   );

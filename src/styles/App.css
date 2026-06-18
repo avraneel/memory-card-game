@@ -1,3 +1,7 @@
+.app {
+  display: grid;
+}
+
 @media (width < 500px) {
   header,
   section {

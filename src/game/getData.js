@@ -2,7 +2,7 @@ export default async function getData(name) {
   const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
 
   try {
-    const repsonse = await fetch(url); // wait till fetch resolves and returns a response object
+    const repsonse = await fetch(url);
     if (!repsonse.ok) {
       throw new Error(`Response Status : ${repsonse.status}`);
     }

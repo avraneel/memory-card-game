@@ -1,44 +1,28 @@
 import Card from "./Card";
-import getData from "../game/getData";
+
+import "../styles/cardGrid.css";
 
 export default function CardGrid() {
-  const pokemonList = [];
+  const pokemonNames = [
+    "bulbasaur",
+    "charmander",
+    "ariados",
+    "magmortar",
+    "hitmonchan",
+  ];
 
-  for (let i = 1; i < 12; i++) {
-    const item = {
+  const pokemonItems = pokemonNames.map((pokemon) => {
+    return {
       id: crypto.randomUUID(),
-      name: "bulbasaur",
-      sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${Math.pow(i + 13, 2)}.png`,
+      name: `${pokemon[0].toUpperCase() + pokemon.substring(1)}`,
+      sprite:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png",
     };
-
-    pokemonList.push(item);
-  }
+  });
 
   function handleClick() {}
 
-  const pokemonCards = pokemonList.map((pokemon) => (
-    <li key={pokemon.id} value={pokemon.name} onClick={handleClick}>
-      <Card item={pokemon} />
-    </li>
-  ));
+  const pokemonCards = pokemonItems.map((pokemon) => <Card item={pokemon} />);
 
-  return (
-    <div className="cardGrid">
-      <ul>{pokemonCards}</ul>
-    </div>
-  );
+  return <div className="cardGrid">{pokemonCards}</div>;
 }
-
-async function createList(pokemonNames) {
-  const pokemonList = [];
-
-  for (const pokemon of pokemonNames) {
-    const item = await getData(pokemon);
-    item.id = crypto.randomUUID();
-    pokemonList.push(item);
-  }
-
-  console.log(pokemonList);
-}
-
-createList(["bulbasaur", "charizard"]);

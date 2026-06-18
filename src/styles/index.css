@@ -1,8 +1,35 @@
-ul {
-  list-style-type: none;
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-li {
-  border: 1px solid black;
-  padding: 0px;
+*:not(dialog) {
+  margin: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+picture,
+canvas,
+svg,
+source {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  --radius: 15px;
+}
+
+body {
+  padding: 1rem;
+  font-family: "Outfit", sans-serif;
 }
