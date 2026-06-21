@@ -1,32 +1,58 @@
+import { useState, useEffect } from "react";
+
 import Card from "./Card";
+import getData from "../game/getData";
 
 import "../styles/cardGrid.css";
 
-export default function CardGrid({ setScore, setBestScore }) {
-  const pokemonNames = [
-    "bayleaf",
-    "charmander",
-    "ariados",
-    "magmortar",
-    "hitmonchan",
-    "snorlax",
-    "darkrai",
-    "empoleon",
-    "hypno",
-    "wabuffet",
-  ];
+const pokemonNames = [
+  "serperior",
+  "dragonite",
+  "rampardos",
+  "ariados",
+  "magmortar",
+  "hitmonchan",
+  "snorlax",
+  "darkrai",
+  "empoleon",
+  "wobbuffet",
+  "raikou",
+  "electivire",
+  "articuno",
+  "togekiss",
+  "seviper",
+  "staraptor",
+  "torterra",
+  "steelix",
+];
 
+export default function CardGrid({ setScore, setBestScore }) {
   // When we click on card, App get rendered > CardGrid gets rendered > so shuffle() is executed again
   shuffle(pokemonNames);
 
-  const pokemonItems = pokemonNames.map((pokemon) => {
-    return {
-      id: crypto.randomUUID(),
-      name: pokemon,
-      sprite:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png",
+  const [pokemonItems, setPokemomItems] = useState([]);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function startFetching() {
+      const fetchedItems = [];
+      for (let i = 0; i < pokemonNames.length; i++) {
+        let item = await getData(pokemonNames[i]);
+        fetchedItems.push(item);
+      }
+      console.log(fetchedItems);
+      if (!ignore) {
+        setPokemomItems(fetchedItems);
+      }
+    }
+
+    startFetching();
+
+    return () => {
+      ignore = false;
     };
-  });
+  }, []);
 
   const pokemonCards = pokemonItems.map((pokemon) => (
     <Card
@@ -37,7 +63,11 @@ export default function CardGrid({ setScore, setBestScore }) {
     />
   ));
 
-  return <div className="cardGrid">{pokemonCards}</div>;
+  return (
+    <div className="cardGrid" onClick={() => shuffle(pokemonItems)}>
+      {pokemonCards}
+    </div>
+  );
 }
 
 function shuffle(a) {

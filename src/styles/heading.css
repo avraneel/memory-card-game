@@ -3,4 +3,10 @@ header {
   border-radius: var(--radius);
   background-color: var(--white);
   align-content: center;
+  display: grid;
+  gap: 1rem;
+}
+
+header p {
+  color: #7e7e7e;
 }

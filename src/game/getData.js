@@ -10,10 +10,12 @@ export default async function getData(name) {
     const result = await repsonse.json(); // wait till stuff(body
 
     const name = await result.forms[0].name;
-    const sprite = result.sprites.front_default;
+    const sprite = await result.sprites.front_default;
+    const type = await result.types[0].type.name;
 
     const cardData = {
       name: name,
+      type: type,
       sprite: sprite,
       id: crypto.randomUUID(), // adding here is ok i hope
     };
