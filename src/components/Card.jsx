@@ -15,6 +15,7 @@ export default function Card({ item, setScore, setBestScore }) {
       <img
         src={`${item.sprite}`}
         alt={`${item.name}`}
+        loading="lazy"
         className={`sprite ${item.name}-sprite ${item.type}`}
       />
       <p className="pokemon-name">{nameToDisplay}</p>

@@ -36,11 +36,9 @@ export default function CardGrid({ setScore, setBestScore }) {
     let ignore = false;
 
     async function startFetching() {
-      const fetchedItems = [];
-      for (let i = 0; i < pokemonNames.length; i++) {
-        let item = await getData(pokemonNames[i]);
-        fetchedItems.push(item);
-      }
+      const fetchedItems = await Promise.all(
+        pokemonNames.map((pokemon) => getData(pokemon)),
+      );
       if (!ignore) {
         setPokemomItems(fetchedItems);
       }
@@ -72,7 +70,6 @@ export default function CardGrid({ setScore, setBestScore }) {
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * i);
-
     // exchange
     let temp = a[i];
     a[i] = a[j];
