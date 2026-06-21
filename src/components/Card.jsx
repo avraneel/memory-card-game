@@ -1,10 +1,25 @@
+import playRound from "../game/game";
+
 import "../styles/card.css";
 
-export default function Card({ item }) {
+export default function Card({ item, setScore, setBestScore }) {
+  const nameToDisplay = `${item.name[0].toUpperCase() + item.name.substring(1)}`;
+
+  function handleClick() {
+    console.log(`You clicked on ${item.name}`);
+    // setScore(0);
+    playRound(item.name, setScore, setBestScore);
+    // update score and best score here
+  }
+
   return (
-    <div className="card">
-      <img src={`${item.sprite}`} alt={`${item.name}`} className="sprite" />
-      <p className="pokemon-name">{item.name}</p>
+    <div className={`card ${item.name}`} onClick={handleClick}>
+      <img
+        src={`${item.sprite}`}
+        alt={`${item.name}`}
+        className={`sprite ${item.name}-sprite`}
+      />
+      <p className="pokemon-name">{nameToDisplay}</p>
     </div>
   );
 }
