@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import Heading from "./Heading";
 import Scoreboard from "./Scoreboard";
